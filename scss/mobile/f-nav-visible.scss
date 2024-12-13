@@ -230,8 +230,8 @@
 }
   
 // Add padding to main outlet
-#main-outlet {
-  body:not(.has-full-page-chat) & {
+body:not(.has-full-page-chat) {
+  #main-outlet {
     padding-bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
   }
 }

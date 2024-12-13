@@ -1,3 +1,4 @@
+// F NAV
 .f-nav {
   display: flex;
   position: fixed;
@@ -210,32 +211,61 @@
   }
 }
 
-// Elements no scroll down position
-#topic-progress-wrapper {
-  &:not(.docked) {
-    bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
-    transition: bottom 0.1s linear;
+// F NAV hidden
+body.f-nav-hidden {
+  // Header hide everywhere but topic, pm and chat
+  &:not(.archetype-regular):not(.archetype-private_message):not(.has-full-page-chat) {
+    .d-header-wrap {
+      animation: fadeOutZ 0.1s forwards linear;
+    }
+    .leaderboard {
+      .ranking-col-names {
+        top: 0;
+      }
+    }
+    .offline-indicator {
+      top: 0.5em;
+    }
   }
-}
   
-.d-toc-toggle {
-  bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
-  transition: bottom 0.1s linear;
-}
-    
-#reply-control.draft,
-.posts-filtered-notice {
-  bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
-  transition: bottom 0.1s linear;
-}
+  &:not(.has-full-page-chat) {
+    .f-nav {
+      transform: translateY(var(--f-nav-height));
+      padding-bottom: 0;
+      border-top: none;
+    }
+  }
   
-// Add padding to main outlet
-body:not(.has-full-page-chat) {
-  #main-outlet {
-    padding-bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
+  // Topic elements scroll down position
+  .d-toc-toggle,
+  #reply-control.draft,
+  .posts-filtered-notice,
+  #topic-progress-wrapper:not(.docked) {
+    bottom: env(safe-area-inset-bottom);
   }
 }
 
+// Topic elements scroll up position
+html:not(.anon) {
+  body:not(.f-nav-hidden) {
+    .d-toc-toggle,
+    #reply-control.draft,
+    .posts-filtered-notice,
+    #topic-progress-wrapper:not(.docked) {
+      bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
+      transition: bottom 0.1s linear;
+    }
+  }
+    
+  // Add padding to main outlet except /chat
+  body:not(.has-full-page-chat) {
+    #main-outlet {
+      padding-bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+// Hide F NAV on /chat
 .has-full-page-chat {
   .f-nav {
     display: none;

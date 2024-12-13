@@ -3,7 +3,6 @@
 }
 
 // Hide footer nav
-
 html.footer-nav-ipad,
 html.footer-nav-visible {
   --footer-nav-height: 0px;
@@ -22,10 +21,6 @@ html.footer-nav-visible {
   }
 }
 
-html:not(.anon) {
-  @import "custom-header";
-  @import "f-nav-visible";
-  @import "f-nav-hidden";
-}
-
+@import "custom-header";
+@import "f-nav";
 @import "messages-modal";

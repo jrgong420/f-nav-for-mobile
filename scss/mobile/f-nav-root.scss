@@ -22,10 +22,6 @@ html.footer-nav-visible {
   }
 }
 
-html:not(.anon) {
-  @import "custom-header";
-  @import "f-nav-visible";
-  @import "f-nav-hidden";
-}
-
+@import "custom-header";
+@import "f-nav";
 @import "messages-modal";

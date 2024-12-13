@@ -1,24 +1,26 @@
 // Hide default hamburger and current user button
-.d-header-icons .header-dropdown-toggle {
-  @if $hide-hamburger == "true" {
-    #toggle-hamburger-menu {
-      display: none;
-    }
-  }
-  @if $hide-search == "true" {
-    #search-button {
-      display: none;
-    }
-  }
-  @if $hide-chat == "true" {
-    body:not(.has-full-page-chat) & {
-      &.chat-header-icon {
+html:not(.anon) {
+  .d-header-icons .header-dropdown-toggle {
+    @if $hide-hamburger == "true" {
+      #toggle-hamburger-menu {
         display: none;
       }
     }
-  }    
-  #toggle-current-user:not(.avatar-profile-trigger) {
-    display: none;
+    @if $hide-search == "true" {
+      #search-button {
+        display: none;
+      }
+    }
+    @if $hide-chat == "true" {
+      body:not(.has-full-page-chat) & {
+        &.chat-header-icon {
+          display: none;
+        }
+      }
+    }    
+    #toggle-current-user:not(.avatar-profile-trigger) {
+      display: none;
+    }
   }
 }
 

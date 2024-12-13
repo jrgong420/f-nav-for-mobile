@@ -53,6 +53,18 @@ profile_extra_items:
         required: true
         validations:
           url: true
+hide_hamburger:
+  description: "Hide the default header hamburger icon. This should disable if you don't want to add hamburger tab to F NAV."
+  type: bool
+  default: true
+hide_search:
+  description: "Hide the default header search icon. This should disable if you don't want to add search tab to F NAV."
+  type: bool
+  default: true
+hide_chat:
+  description: "Hide the default header chat icon. This should disable if you don't want to add chat tab to F NAV."
+  type: bool
+  default: true
 svg_icons:
   default: "angle-left|message"
   type: list

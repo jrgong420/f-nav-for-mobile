@@ -1,0 +1,14 @@
+@mixin badge-notification($top, $width, $height, $right, $br) {
+  position: absolute;
+  top: $top;
+  min-width: $width;
+  height: $height;
+  margin-right: $right;
+  padding: 0;
+  border: 2px solid var(--secondary);
+  border-radius: $br;
+  color: var(--secondary);
+  pointer-events: none;
+  line-height: 1.4;
+  z-index: 1;
+}

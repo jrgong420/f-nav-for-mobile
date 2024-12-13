@@ -1,0 +1,60 @@
+f_nav_tabs:
+  description: "Set up your F-NAV tabs."
+  type: objects
+  default: 
+    [
+      { "name": Home, "icon": house, "function": home },
+      { "name": Hamburger, "icon": bars, "function": hamburger },
+      { "name": Multi Tab, "icon": message, "function": multi },
+      { "name": Notification, "icon": bell, "function": notificationMenu },
+      { "name": Search, "icon": magnifying-glass, "function": search },
+    ]
+  schema:
+    name: "tab"
+    identifier: name
+    properties:
+      name:
+        type: string
+        required: true
+      icon:
+        type: string
+        required: true
+      destination:
+        type: string
+        validations:
+          url: true
+      function:
+        type: enum
+        choices:
+          - home
+          - hamburger
+          - message
+          - chat
+          - multi
+          - notificationToRoute
+          - notificationMenu
+          - search
+profile_extra_items:
+  description: "Add items to the profile menu which appears before the Log Out button."
+  type: objects
+  default: 
+    []
+  schema:
+    name: "item"
+    identifier: label
+    properties:
+      icon:
+        type: string
+      label:
+        type: string
+        required: true
+      url:
+        type: string
+        required: true
+        validations:
+          url: true
+svg_icons:
+  default: "angle-left|message"
+  type: list
+  list_type: "compact"
+  description: "List of FontAwesome 6 icons used in this theme component"

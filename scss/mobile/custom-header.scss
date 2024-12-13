@@ -1,0 +1,111 @@
+// Hide default hamburger and current user button
+.d-header-icons .header-dropdown-toggle {
+  #toggle-hamburger-menu,
+  #toggle-current-user:not(.avatar-profile-trigger),
+  #search-button {
+    display: none;
+  }
+  body:not(.has-full-page-chat) & {
+    &.chat-header-icon {
+      display: none;
+    }
+  }
+}
+
+// Hide Profile Tab in notification menu
+.user-menu.revamped {
+  .bottom-tabs {
+    border-top: none;
+    .user-menu-tab {
+      display: none;
+    }
+  }
+}
+
+// Profile menu
+.fk-d-menu-modal.avatar-profile-content {
+  .d-modal__body {
+    ul.user-menu-items {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 0.75em 1em;
+      margin: 0;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      max-height: 3em; // prevent buttons from getting too tall
+      padding-block: 0.15em;
+      background-color: var(--secondary);
+      box-sizing: border-box;
+      list-style-type: none;
+      > * {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0.5em 0.25em;
+        margin: 0;
+        align-items: center;
+      }
+      img.emoji {
+        height: 1em;
+        width: 1em;
+        padding-top: 0.2em;
+        margin-right: 0.5em;
+      }
+      .d-icon {
+        padding-top: 0;
+        margin-right: 0.5em;
+        color: var(--primary-medium);
+      }
+      .item-label {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--primary);
+      }
+      &.enabled .d-icon {
+        color: var(--tertiary);
+      }
+      &.preferences {
+        z-index: 1; // hide line top part
+      }
+    }
+    
+    .set-user-status {
+      .emoji {
+        padding-top: 0;
+      }
+    }
+
+    .profile-tab-btn {
+      justify-content: unset;
+      line-height: var(--line-height-large);
+      width: 100%;
+
+      .relative-date {
+        font-size: var(--font-down-3);
+        color: var(--primary-medium);
+      }
+    
+      .d-icon {
+        padding: 0;
+      }
+    }
+    
+    .do-not-disturb {
+      .d-icon-toggle-on {
+        color: var(--tertiary);
+      }
+    }
+    
+    hr {
+      margin: 3px 0;
+      border-top: 1px solid var(--primary-low);
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+:root {
+  --f-nav-height: 3.66em;
+}
+
+// Hide footer nav
+
+html.footer-nav-ipad,
+html.footer-nav-visible {
+  --footer-nav-height: 0px;
+  .footer-nav {
+    display: none;
+  }
+}
+
+@keyframes fadeOutZ {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}
+
+html:not(.anon) {
+  @import "custom-header";
+  @import "f-nav-visible";
+  @import "f-nav-hidden";
+
+  #main-outlet {
+    padding-bottom: var(--f-nav-height);
+  }
+}
+
+@import "messages-modal";

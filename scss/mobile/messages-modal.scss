@@ -1,0 +1,258 @@
+.message-modal {
+  .message-panel {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    gap: 1rem;
+    padding-bottom: 0;
+
+    * {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      @include user-select(none);
+    }
+
+    &__messages {
+      padding-bottom: 0.5em;
+      display: none;
+      flex-direction: column;
+      list-style: none;
+      margin: 0;
+
+      &.active {
+        display: flex;
+      }
+
+      .empty-state {
+        padding: 1em 0.5em;
+      }
+
+      li {
+        border-radius: var(--d-border-radius);
+        border-top: 1px solid var(--primary-low);
+        &:last-child {
+          border-bottom: 1px solid var(--primary-low);
+        }
+        transition: background 0.25s;
+        &.unread {
+          background: var(--tertiary-very-low);
+          .discourse-no-touch & {
+            &:hover,
+            &:focus {
+              background: var(--tertiary-400);
+            }
+            .message-panel__main-link {
+              &:hover,
+              &:focus {
+                background: var(--tertiary-400);
+              }
+            }
+          }
+          .discourse-touch & {
+            &:focus,
+            &:active {
+              background: var(--tertiary-400);
+            }
+            a {
+              &:focus,
+              &:active {
+                background: var(--tertiary-400);
+              }
+            }
+          }
+          .message-panel__main-link {
+            .message-panel__info {
+              .message-panel__title {
+                color: var(--tertiary);
+              }
+            }
+          }
+        }
+        .message-panel__main-link {
+          box-sizing: border-box;
+          padding: 0.75rem;
+          border-radius: var(--d-border-radius);
+          transition: background 0.25s;
+          .discourse-no-touch & {
+            &:hover,
+            &:focus {
+              background: var(--d-hover);
+            }
+          }
+          .discourse-touch & {
+            &:focus,
+            &:active {
+              background: var(--d-hover);
+            }
+          }
+          display: flex;
+          gap: 0.5rem;
+          width: 100%;
+          overflow-x: hidden;
+
+          .message-panel__info {
+            overflow: hidden;
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            gap: 0.5em;
+            
+            .message-panel__title {
+              color: var(--primary);
+              font-weight: 500;
+              font-size: var(--font-up-1);
+              img.emoji {
+                width: var(--font-up-1);
+                height: var(--font-up-1);
+              }
+              .badge-notification {
+                font-size: var(--font-down-2);
+                background: var(--tertiary-med-or-tertiary);
+              }
+              .topic-statuses {
+                display: inline-table;
+              }
+            }
+
+            .message-panel__participants {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 0.25rem;
+              margin-left: 2px;
+            }
+
+            &.has-reply {
+              .message-panel__participants {
+                a {
+                  &:first-child {
+                    .latest {
+                      &.avatar {
+                        box-shadow: 0 0 3px 1px rgba(var(--tertiary-rgb), 0.35);
+                        border: 1px solid rgba(var(--tertiary-rgb), 0.5);
+                        position: relative;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            
+            .message-panel__excerpt {
+              margin: 0;
+              color: var(--primary);
+              img.emoji {
+                width: var(--font-up-1);
+                height: var(--font-up-1);
+              }
+            }
+            
+            .message-panel__tags {
+              list-style: none;
+              margin: 0.25rem 0 0 0;
+              gap: 0.25rem;
+              font-size: var(--font-down-1);
+              display: flex;
+              flex-wrap: wrap;
+              li {
+                color: var(--primary-high);
+                display: flex;
+                align-items: center;
+                height: 1rem;
+                padding: 0 0.25rem;
+                background: var(--primary-200);
+              }
+            }
+
+            .message-panel__topic-image {
+              height: 300px;
+              .topic-image {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 300px;
+                border-radius: var(--d-border-radius);
+                overflow: hidden;
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+              }
+            }
+
+            &-bottom {
+              display: flex;
+              align-items: center;
+              gap: 1em;
+              font-size: var(--font-down-1);
+              color: var(--primary-med-or-secondary-med);
+
+              span {
+                display: flex;
+                align-items: center;
+
+                .d-icon {
+                  margin-left: 4px;
+                }
+
+                &.message-panel__reactions {
+                  margin-left: auto;
+                  .d-icon {
+                    font-size: var(--font-up-1);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    &__inboxes {      
+      margin: 0;
+      gap: 0.5em;
+      overflow-x: auto;
+      position: relative;
+      
+      // avoids auto-scroll on initial load if active nav item is overflowed
+      scroll-behavior: auto;
+      
+      // hides scrollbars, but allows mouse scrolling
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+        height: 0;
+      }
+
+      scroll-behavior: smooth; // smooth scrolling on user interaction
+
+      .badge-notification {
+        margin-left: 0.25em;
+        background: var(--tertiary-med-or-tertiary);
+      }
+
+      .message-panel__inbox {
+        display: flex;
+        white-space: nowrap;
+      }
+
+      .new-pm {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .d-modal__header {
+    border-bottom: none;
+  }
+  
+  .d-modal__footer {
+    justify-content: space-between;
+    border-top: none;
+    .all-messages {
+      margin-left: auto;
+    }
+  }
+
+  + .d-modal__backdrop {
+    z-index: z("header");
+  }
+}

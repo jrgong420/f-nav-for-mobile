@@ -1,0 +1,36 @@
+// If scroll down
+body.f-nav-hidden {
+  // Header hide everywhere but topic or pm
+  &:not(.archetype-regular):not(.archetype-private_message):not(.has-full-page-chat) {
+    .d-header-wrap {
+      animation: fadeOutZ 0.1s forwards linear;
+    }
+    .leaderboard {
+      .ranking-col-names {
+        top: 0;
+      }
+    }
+    .offline-indicator {
+      top: 0.5em;
+    }
+  }    
+    
+  // F NAV
+  &:not(.has-full-page-chat) {
+    .f-nav {
+      transform: translateY(var(--f-nav-height));
+      padding-bottom: 0;
+      border-top: none;
+    }
+  }
+  
+  // Elements bottom position
+  #topic-progress-wrapper:not(.docked),
+  .d-toc-toggle {
+    bottom: env(safe-area-inset-bottom);
+  }
+  #reply-control.draft,
+  .posts-filtered-notice {
+    bottom: env(safe-area-inset-bottom);
+  }
+}

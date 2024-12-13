@@ -236,7 +236,7 @@ body.f-nav-hidden {
     }
   }
   
-  // Topic elements bottom position
+  // Topic elements scroll down position
   .d-toc-toggle,
   #reply-control.draft,
   .posts-filtered-notice,
@@ -245,7 +245,7 @@ body.f-nav-hidden {
   }
 }
 
-// Topic elements scroll down position
+// Topic elements scroll up position
 html:not(.anon) {
   body:not(.f-nav-hidden) {
     .d-toc-toggle,

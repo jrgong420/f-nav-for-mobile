@@ -46,7 +46,7 @@ html:not(.anon) {
       flex-direction: column;
       overflow-y: auto;
       overflow-x: hidden;
-      margin: 0.5em 0.75em 1em;
+      margin: 0.5em 0.75em;
     }
     li {
       display: flex;
@@ -85,9 +85,6 @@ html:not(.anon) {
       &.enabled .d-icon {
         color: var(--tertiary);
       }
-      &.preferences {
-        z-index: 1; // hide line top part
-      }
     }
     
     .set-user-status {
@@ -97,6 +94,7 @@ html:not(.anon) {
     }
 
     .profile-tab-btn {
+      background: transparent;
       justify-content: unset;
       line-height: var(--line-height-large);
       width: 100%;
@@ -108,12 +106,6 @@ html:not(.anon) {
     
       .d-icon {
         padding: 0;
-      }
-    }
-    
-    .do-not-disturb {
-      .d-icon-toggle-on {
-        color: var(--tertiary);
       }
     }
     

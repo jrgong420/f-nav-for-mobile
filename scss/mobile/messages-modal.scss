@@ -164,17 +164,16 @@
             }
 
             .message-panel__topic-image {
-              height: 300px;
               .topic-image {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                height: 300px;
-                border-radius: var(--d-border-radius);
+                max-height: 300px;
                 overflow: hidden;
                 img {
                   width: 100%;
                   height: auto;
+                  border-radius: var(--d-border-radius);
                 }
               }
             }

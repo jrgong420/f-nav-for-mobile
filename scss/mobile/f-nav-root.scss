@@ -26,10 +26,6 @@ html:not(.anon) {
   @import "custom-header";
   @import "f-nav-visible";
   @import "f-nav-hidden";
-
-  #main-outlet {
-    padding-bottom: var(--f-nav-height);
-  }
 }
 
 @import "messages-modal";

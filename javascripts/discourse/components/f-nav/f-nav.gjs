@@ -12,6 +12,7 @@ import FNavItem from "./f-nav-item";
 
 const SCROLL_MAX = 30;
 const HIDDEN_F_NAV_CLASS = "f-nav-hidden";
+const MODAL_OPEN_CLASS = "modal-open";
 
 export default class FNav extends Component {
   @service router;
@@ -21,7 +22,32 @@ export default class FNav extends Component {
   @service topicTrackingState;
 
   tabs = settings.f_nav_tabs;
+
+  // Scroll handling
   lastScrollTop = 0;
+
+  @action
+  scrollListener(event) {
+    if (document.documentElement.classList.contains(MODAL_OPEN_CLASS)) {
+      return;
+    }
+
+    const currentScroll = window.scrollY;
+    const shouldHide = this.lastScrollTop < currentScroll && currentScroll > SCROLL_MAX;
+    document.body.classList.toggle(HIDDEN_F_NAV_CLASS, shouldHide);
+    this.lastScrollTop = currentScroll;
+  }
+
+  @action
+  setupScrollListener() {
+    this.lastScrollTop = window.scrollY;
+    document.addEventListener("scroll", this.scrollListener, { passive: true });
+  }
+
+  @action
+  removeScrollListener() {
+    document.removeEventListener("scroll", this.scrollListener);
+  }
 
   // Computed properties for visibility and states
   get shouldShowNav() {
@@ -87,27 +113,6 @@ export default class FNav extends Component {
   #handleElementClick(elementId) {
     const element = document.getElementById(elementId);
     element?.click();
-  }
-
-  // Scroll handling
-  @action
-  scrollListener() {
-    const scrollTop = window.scrollY;
-    const body = document.body;
-    const shouldHide = this.lastScrollTop < scrollTop && scrollTop > SCROLL_MAX;
-    
-    body.classList.toggle(HIDDEN_F_NAV_CLASS, shouldHide);
-    this.lastScrollTop = scrollTop;
-  }
-
-  @action
-  setupScrollListener() {
-    document.addEventListener("scroll", this.scrollListener);
-  }
-
-  @action
-  removeScrollListener() {
-    document.removeEventListener("scroll", this.scrollListener);
   }
 
   // Navigation actions

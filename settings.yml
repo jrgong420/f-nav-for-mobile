@@ -26,6 +26,7 @@ f_nav_tabs:
       function:
         type: enum
         choices:
+          - none
           - home
           - hamburger
           - message

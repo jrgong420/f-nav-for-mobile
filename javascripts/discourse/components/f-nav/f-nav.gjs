@@ -7,7 +7,6 @@ import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
 import { htmlSafe } from "@ember/template";
 import DiscourseURL from "discourse/lib/url";
 import DoNotDisturb from "discourse/lib/do-not-disturb";
-import { scrollTop } from "discourse/mixins/scroll-top";
 import FNavItem from "./f-nav-item";
 
 const SCROLL_MAX = 30;

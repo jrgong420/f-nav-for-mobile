@@ -6,35 +6,50 @@ import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
 import { htmlSafe } from "@ember/template";
 import DiscourseURL from "discourse/lib/url";
+import { popupAjaxError } from "discourse/lib/ajax-error";
 import DoNotDisturb from "discourse/lib/do-not-disturb";
 import FNavItem from "./f-nav-item";
 
 const SCROLL_MAX = 30;
 const HIDDEN_F_NAV_CLASS = "f-nav-hidden";
 const MODAL_OPEN_CLASS = "modal-open";
+const SCROLL_LOCK_CLASS = "scroll-lock";
 
 export default class FNav extends Component {
   @service router;
   @service currentUser;
   @service site;
   @service siteSettings;
+  @service chat;
   @service topicTrackingState;
 
   tabs = settings.f_nav_tabs;
 
   // Scroll handling
   lastScrollTop = 0;
+  scrollTimeout = null;
 
   @action
   scrollListener(event) {
-    if (document.documentElement.classList.contains(MODAL_OPEN_CLASS)) {
+    if (
+      document.documentElement.classList.contains(MODAL_OPEN_CLASS) ||
+      document.documentElement.classList.contains(SCROLL_LOCK_CLASS)
+    ) {
       return;
     }
 
-    const currentScroll = window.scrollY;
-    const shouldHide = this.lastScrollTop < currentScroll && currentScroll > SCROLL_MAX;
-    document.body.classList.toggle(HIDDEN_F_NAV_CLASS, shouldHide);
-    this.lastScrollTop = currentScroll;
+    if (this.scrollTimeout) {
+      return;
+    }
+
+    this.scrollTimeout = requestAnimationFrame(() => {
+      const currentScroll = window.scrollY;
+      const shouldHide = this.lastScrollTop < currentScroll && currentScroll > SCROLL_MAX;
+
+      document.body.classList.toggle(HIDDEN_F_NAV_CLASS, shouldHide);
+      this.lastScrollTop = currentScroll;
+      this.scrollTimeout = null;
+    });
   }
 
   @action

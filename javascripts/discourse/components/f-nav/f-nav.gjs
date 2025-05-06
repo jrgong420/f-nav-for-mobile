@@ -6,7 +6,6 @@ import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import willDestroy from "@ember/render-modifiers/modifiers/will-destroy";
 import { htmlSafe } from "@ember/template";
 import DiscourseURL from "discourse/lib/url";
-import { popupAjaxError } from "discourse/lib/ajax-error";
 import DoNotDisturb from "discourse/lib/do-not-disturb";
 import FNavItem from "./f-nav-item";
 
@@ -20,7 +19,6 @@ export default class FNav extends Component {
   @service currentUser;
   @service site;
   @service siteSettings;
-  @service chat;
   @service topicTrackingState;
 
   tabs = settings.f_nav_tabs;

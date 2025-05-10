@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     flex: 1;
     @include user-select(none);
 
@@ -28,7 +29,8 @@
 
     &.active {
       .d-icon,
-      .btn .d-icon {
+      .btn .d-icon,
+      .tab-label {
         color: var(--tertiary);
       }
     }
@@ -147,6 +149,12 @@
     .d-icon {
       width: 1.4em;
       height: 1.4em;
+    }
+
+    .tab-label {
+      position: absolute;
+      bottom: 0;
+      font-size: var(--font-down-2);
     }
   }
 }

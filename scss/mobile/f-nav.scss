@@ -160,6 +160,14 @@
       font-size: var(--font-down-3);
       line-height: 1;
     }
+
+    // hack multi & messages tab
+    // these tabs includes button
+    + button {
+      .tab-label {
+        transform: translateY(-100%);
+      }
+    }
   }
 }
 

@@ -18,9 +18,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     flex: 1;
     @include user-select(none);
+
+    @if $f-nav-show-labels == "true" {
+      flex-direction: column;
+    }
 
     &:active {
       will-change: background;
@@ -152,9 +155,10 @@
     }
 
     .tab-label {
-      position: absolute;
-      bottom: 0;
+      margin-bottom: -2px;
+      margin-top: 2px;
       font-size: var(--font-down-3);
+      line-height: 1;
     }
   }
 }

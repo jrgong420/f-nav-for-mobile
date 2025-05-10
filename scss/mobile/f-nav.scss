@@ -165,6 +165,7 @@
     // these tabs includes button
     button {
       + .tab-label {
+        margin-bottom: 0;
         transform: translateY(-100%);
       }
     }

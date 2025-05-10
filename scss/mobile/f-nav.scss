@@ -152,6 +152,10 @@
     .d-icon {
       width: 1.4em;
       height: 1.4em;
+      @if $f-nav-show-labels == "true" {
+        width: 1.2em;
+        height: 1.2em;
+      }
     }
 
     .tab-label {

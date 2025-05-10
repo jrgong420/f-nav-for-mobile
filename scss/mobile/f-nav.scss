@@ -159,7 +159,7 @@
       position: absolute;
       transform: translateY(100%);
       font-size: var(--font-down-3);
-      line-height: 1;
+      line-height: var(--line-height-medium);
     }
   }
 }

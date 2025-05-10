@@ -1,6 +1,7 @@
 import Component from "@glimmer/component";
 import { fn } from "@ember/helper";
 import { on } from "@ember/modifier";
+import { and } from "truth-helpers";
 import dIcon from "discourse-common/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 import formatAge from "discourse/helpers/format-age";
@@ -121,6 +122,11 @@ export default class FNavItem extends Component {
         {{/if}}
       {{else}}
         {{dIcon @tab.icon}}
+      {{/if}}
+      {{#if (and (theme-setting "f_nav_show_labels") @tab.name)}}
+        <div class="tab-label">
+          {{@tab.name}}
+        </div>
       {{/if}}
     </div>
   </template>

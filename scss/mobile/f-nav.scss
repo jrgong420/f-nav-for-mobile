@@ -28,7 +28,8 @@
 
     &.active {
       .d-icon,
-      .btn .d-icon {
+      .btn .d-icon,
+      .tab-label {
         color: var(--tertiary);
       }
     }
@@ -147,6 +148,18 @@
     .d-icon {
       width: 1.4em;
       height: 1.4em;
+      @if $f-nav-show-labels == "true" {
+        width: 1.2em;
+        height: 1.2em;
+        margin-top: -0.75em;
+      }
+    }
+
+    .tab-label {
+      position: absolute;
+      transform: translateY(100%);
+      font-size: var(--font-down-3);
+      line-height: var(--line-height-medium);
     }
   }
 }

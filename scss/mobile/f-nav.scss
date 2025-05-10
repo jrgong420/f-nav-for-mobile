@@ -163,8 +163,8 @@
 
     // hack multi & messages tab
     // these tabs includes button
-    + button {
-      .tab-label {
+    button {
+      + .tab-label {
         transform: translateY(-100%);
       }
     }

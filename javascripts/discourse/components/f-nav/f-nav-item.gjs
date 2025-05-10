@@ -80,6 +80,10 @@ export default class FNavItem extends Component {
     return () => this.args.onNavigate(this.args.tab);
   }
 
+  get showLabels() {
+    return settings.f_nav_show_labels;
+  }
+
   <template>
     <div
       role="link"
@@ -123,7 +127,7 @@ export default class FNavItem extends Component {
       {{else}}
         {{dIcon @tab.icon}}
       {{/if}}
-      {{#if (and (theme-setting "f_nav_show_labels") @tab.name)}}
+      {{#if (and this.showLabels @tab.name)}}
         <div class="tab-label">
           {{@tab.name}}
         </div>

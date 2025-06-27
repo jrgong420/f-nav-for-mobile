@@ -1,4 +1,5 @@
 import Component from "@glimmer/component";
+import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import DMenu from "float-kit/components/d-menu";
@@ -34,6 +35,11 @@ export default class MultiTabMessages extends Component {
     this.dMenu = api;
   }
 
+  @action
+  closeMenu() {
+    this.dMenu.close();
+  }
+
   <template>
     {{#if this.canUseChat}}
       <DMenu
@@ -63,7 +69,7 @@ export default class MultiTabMessages extends Component {
             <li class="messages-icon">
               <MessagesIcon />
             </li>
-            <li class="chat-header-icon">
+            <li {{on "click" this.closeMenu}} class="chat-header-icon">
               <ChatIcon />
             </li>
           </ul>

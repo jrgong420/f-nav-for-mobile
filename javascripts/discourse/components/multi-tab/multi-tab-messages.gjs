@@ -1,5 +1,4 @@
 import Component from "@glimmer/component";
-import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import DMenu from "float-kit/components/d-menu";
@@ -60,7 +59,7 @@ export default class MultiTabMessages extends Component {
           {{dIcon "message"}}
         </:trigger>
         <:content>
-          <ul {{on "click" args.close}} class="messages-options">
+          <ul class="messages-options">
             <li class="messages-icon">
               <MessagesIcon />
             </li>

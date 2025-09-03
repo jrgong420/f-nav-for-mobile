@@ -3,15 +3,12 @@ import { service } from "@ember/service";
 import DButton from "discourse/components/d-button";
 import icon from "discourse-common/helpers/d-icon";
 import getURL from "discourse-common/lib/get-url";
+import { optionalRequire } from "discourse/lib/utilities";
 import { i18n } from "discourse-i18n";
 
-let ChatHeaderIconUnreadIndicator;
-
-try {
-  ChatHeaderIconUnreadIndicator = require("discourse/plugins/chat/discourse/components/chat/header/icon/unread-indicator").default;
-} catch (e) {
-  ChatHeaderIconUnreadIndicator = null;
-}
+const ChatHeaderIconUnreadIndicator = optionalRequire(
+  "discourse/plugins/chat/discourse/components/chat/header/icon/unread-indicator"
+);
 
 export default class ChatIcon extends Component {
   @service currentUser;

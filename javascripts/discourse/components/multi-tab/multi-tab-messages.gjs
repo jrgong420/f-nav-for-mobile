@@ -2,18 +2,15 @@ import Component from "@glimmer/component";
 import { on } from "@ember/modifier";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
+import { optionalRequire } from "discourse/lib/utilities";
 import DMenu from "float-kit/components/d-menu";
 import dIcon from "discourse-common/helpers/d-icon";
 import ChatIcon from "../messages/chat-icon";
 import MessagesIcon from "../messages/messages-icon";
 
-let ChatHeaderIconUnreadIndicator;
-
-try {
-  ChatHeaderIconUnreadIndicator = require("discourse/plugins/chat/discourse/components/chat/header/icon/unread-indicator").default;
-} catch (e) {
-  ChatHeaderIconUnreadIndicator = null;
-}
+const ChatHeaderIconUnreadIndicator = optionalRequire(
+  "discourse/plugins/chat/discourse/components/chat/header/icon/unread-indicator"
+);
 
 export default class MultiTabMessages extends Component {
   @service site;

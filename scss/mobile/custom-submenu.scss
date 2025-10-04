@@ -1,0 +1,168 @@
+// Custom Submenu Modal Styling
+// Follows the same pattern as avatar-profile-content for consistency
+
+.fk-d-menu-modal.custom-submenu-content {
+  .d-modal__body {
+    ul.custom-submenu-items {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      overflow-x: hidden;
+      margin: 0.5em 0.75em;
+      padding: 0;
+      list-style: none;
+    }
+
+    li.custom-submenu-item {
+      display: flex;
+      align-items: center;
+      flex: 1 1 auto;
+      max-height: 3em; // prevent items from getting too tall
+      padding-block: 0.15em;
+      background-color: var(--secondary);
+      box-sizing: border-box;
+      list-style-type: none;
+
+      a {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0.75em 0.5em;
+        margin: 0;
+        align-items: center;
+        text-decoration: none;
+        color: var(--primary);
+        transition: background-color 0.15s ease-in-out;
+
+        &:hover,
+        &:focus {
+          background-color: var(--primary-very-low);
+        }
+
+        &:active {
+          background-color: var(--primary-low);
+        }
+      }
+
+      .d-icon {
+        padding-top: 0;
+        margin-right: 0.5em;
+        color: var(--primary-medium);
+        flex-shrink: 0;
+      }
+
+      .item-label {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--primary);
+        flex: 1;
+      }
+    }
+  }
+}
+
+// Custom Submenu Trigger Styling (in F-Nav bar)
+.f-nav {
+  .tab {
+    .custom-submenu-trigger {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .d-icon {
+        color: var(--primary-high);
+      }
+
+      &:hover .d-icon,
+      &:focus .d-icon {
+        color: var(--tertiary);
+      }
+    }
+
+    &.active .custom-submenu-trigger .d-icon {
+      color: var(--tertiary);
+    }
+  }
+}
+
+// Touch-friendly spacing for mobile devices
+@media (max-width: 767px) {
+  .fk-d-menu-modal.custom-submenu-content {
+    .d-modal__body {
+      li.custom-submenu-item {
+        min-height: 2.75em; // ensure touch targets are large enough
+        
+        a {
+          padding: 0.85em 0.6em; // slightly larger padding for touch
+        }
+      }
+    }
+  }
+}
+
+// Tablet and larger screens
+@media (min-width: 768px) {
+  .fk-d-menu-modal.custom-submenu-content {
+    .d-modal__body {
+      ul.custom-submenu-items {
+        min-width: 200px; // ensure menu has minimum width on larger screens
+      }
+    }
+  }
+}
+
+// Dark mode adjustments
+.dark-scheme {
+  .fk-d-menu-modal.custom-submenu-content {
+    .d-modal__body {
+      li.custom-submenu-item {
+        a {
+          &:hover,
+          &:focus {
+            background-color: var(--primary-low);
+          }
+
+          &:active {
+            background-color: var(--primary-medium);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Accessibility: Focus states
+.fk-d-menu-modal.custom-submenu-content {
+  .d-modal__body {
+    li.custom-submenu-item {
+      a {
+        &:focus-visible {
+          outline: 2px solid var(--tertiary);
+          outline-offset: -2px;
+        }
+      }
+    }
+  }
+}
+
+// Empty state (when no items configured)
+.fk-d-menu-modal.custom-submenu-content {
+  .d-modal__body {
+    ul.custom-submenu-items:empty::after {
+      content: "No menu items configured";
+      display: block;
+      padding: 1em;
+      text-align: center;
+      color: var(--primary-medium);
+      font-style: italic;
+    }
+  }
+}
+

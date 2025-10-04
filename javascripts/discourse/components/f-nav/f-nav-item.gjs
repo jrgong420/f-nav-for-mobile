@@ -6,6 +6,7 @@ import dIcon from "discourse-common/helpers/d-icon";
 import { i18n } from "discourse-i18n";
 import formatAge from "discourse/helpers/format-age";
 import MultiTabMessages from "../multi-tab/multi-tab-messages";
+import CustomSubmenu from "../custom-submenu/custom-submenu";
 import AllUnreadNotifications from "../notifications/all-unread";
 import ReviewableNotifications from "../notifications/reviewable";
 import MessagesIcon from "../messages/messages-icon";
@@ -22,6 +23,10 @@ export default class FNavItem extends Component {
 
   get isMulti() {
     return this.args.tab?.function === "multi";
+  }
+
+  get isCustomMenu() {
+    return this.args.tab?.function === "customMenu";
   }
 
   get isMessage() {
@@ -102,6 +107,8 @@ export default class FNavItem extends Component {
         {{/if}}
       {{else if this.isMulti}}
         <MultiTabMessages />
+      {{else if this.isCustomMenu}}
+        <CustomSubmenu @tab={{@tab}} />
       {{else if this.isMessage}}
         <MessagesIcon />
       {{else if this.isChat}}

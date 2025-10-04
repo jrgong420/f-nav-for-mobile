@@ -74,7 +74,7 @@ export default class AvatarProfile extends Component {
       return this.currentUser.leaveDoNotDisturb().finally(() => {
         this.saving = false;
       });
-    } else {      
+    } else {
       this.dMenu.close();
 
       // Set delay to ensure modal is opening correctly
@@ -94,7 +94,7 @@ export default class AvatarProfile extends Component {
   @action
   setUserStatusClick() {
     this.dMenu.close();
-    
+
     // Set delay to ensure modal is opening correctly
     discourseLater(() => {
       this.modal.show(UserStatusModal, {
@@ -119,6 +119,22 @@ export default class AvatarProfile extends Component {
   onRegisterApi(api) {
     this.dMenu = api;
   }
+
+  get visibleProfileItems() {
+    const items = settings.profile_extra_items || [];
+    const user = this.currentUser;
+    return items.filter((item) => {
+      if (!item.groups || item.groups.length === 0) {
+        return true;
+      }
+      if (!user) {
+        return false;
+      }
+      const userGroupIds = user.groups?.map((g) => g.id) || [];
+      return item.groups.some((id) => userGroupIds.includes(id));
+    });
+  }
+
 
   <template>
     {{#if this.currentUser}}
@@ -163,7 +179,7 @@ export default class AvatarProfile extends Component {
                   </DButton>
                 </li>
               {{/if}}
-            
+
               <li
                 class={{concatClass
                   "presence-toggle"
@@ -182,7 +198,7 @@ export default class AvatarProfile extends Component {
                   </span>
                 </DButton>
               </li>
-            
+
               <li
                 class={{concatClass "do-not-disturb" (if this.isInDoNotDisturb "enabled")}}
               >
@@ -203,9 +219,9 @@ export default class AvatarProfile extends Component {
                   </span>
                 </DButton>
               </li>
-            
+
               <hr />
-            
+
               <li {{on "click" args.close}} class="summary">
                 <LinkTo @route="user.summary" @model={{this.currentUser}}>
                   {{dIcon "user"}}
@@ -214,7 +230,7 @@ export default class AvatarProfile extends Component {
                   </span>
                 </LinkTo>
               </li>
-            
+
               <li {{on "click" args.close}} class="activity">
                 <LinkTo @route="userActivity" @model={{this.currentUser}}>
                   {{dIcon "bars-staggered"}}
@@ -223,7 +239,7 @@ export default class AvatarProfile extends Component {
                   </span>
                 </LinkTo>
               </li>
-            
+
               {{#if this.currentUser.can_invite_to_forum}}
                 <li {{on "click" args.close}} class="invites">
                   <LinkTo @route="userInvited" @model={{this.currentUser}}>
@@ -234,7 +250,7 @@ export default class AvatarProfile extends Component {
                   </LinkTo>
                 </li>
               {{/if}}
-            
+
               <li {{on "click" args.close}} class="drafts">
                 <LinkTo @route="userActivity.drafts" @model={{this.currentUser}}>
                   {{dIcon "user_menu.drafts"}}
@@ -247,7 +263,7 @@ export default class AvatarProfile extends Component {
                   </span>
                 </LinkTo>
               </li>
-            
+
               <li {{on "click" args.close}} class="preferences">
                 <LinkTo @route="preferences" @model={{this.currentUser}}>
                   {{dIcon "gear"}}
@@ -256,7 +272,7 @@ export default class AvatarProfile extends Component {
                   </span>
                 </LinkTo>
               </li>
-            
+
               {{#if this.showToggleAnonymousButton}}
                 <li
                   {{on "click" args.close}}
@@ -302,7 +318,7 @@ export default class AvatarProfile extends Component {
               {{/each}}
 
               <hr />
-        
+
               <li class="logout">
                 <DButton @action={{routeAction "logout"}} class="btn-flat profile-tab-btn">
                   {{dIcon "right-from-bracket"}}
@@ -316,20 +332,6 @@ export default class AvatarProfile extends Component {
         </DMenu>
       </li>
     {{/if}}
-  get visibleProfileItems() {
-    const items = settings.profile_extra_items || [];
-    const user = this.currentUser;
-    return items.filter((item) => {
-      if (!item.groups || item.groups.length === 0) {
-        return true;
-      }
-      if (!user) {
-        return false;
-      }
-      const userGroupIds = user.groups?.map((g) => g.id) || [];
-      return item.groups.some((id) => userGroupIds.includes(id));
-    });
-  }
 
   </template>
 }

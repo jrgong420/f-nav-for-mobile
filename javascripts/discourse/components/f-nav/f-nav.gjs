@@ -23,6 +23,21 @@ export default class FNav extends Component {
 
   tabs = settings.f_nav_tabs;
 
+  get visibleTabs() {
+    const tabs = settings.f_nav_tabs || [];
+    const user = this.currentUser;
+    return tabs.filter((tab) => {
+      if (!tab.groups || tab.groups.length === 0) {
+        return true;
+      }
+      if (!user) {
+        return false;
+      }
+      const userGroupIds = user.groups?.map((g) => g.id) || [];
+      return tab.groups.some((id) => userGroupIds.includes(id));
+    });
+  }
+
   // Scroll handling
   lastScrollTop = 0;
   scrollTimeout = null;
@@ -63,7 +78,7 @@ export default class FNav extends Component {
 
   // Computed properties for visibility and states
   get shouldShowNav() {
-    return this.currentUser && this.site.mobileView && this.tabs.length;
+    return this.currentUser && this.site.mobileView && this.visibleTabs.length;
   }
 
   get canUseChat() {
@@ -165,7 +180,7 @@ export default class FNav extends Component {
         {{didInsert this.setupScrollListener}}
         {{willDestroy this.removeScrollListener}}
       >
-        {{#each this.tabs as |tab|}}
+        {{#each this.visibleTabs as |tab|}}
           <FNavItem
             @tab={{tab}}
             @isTopicRoute={{this.isTopicRoute}}

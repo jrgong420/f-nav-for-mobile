@@ -36,6 +36,9 @@ f_nav_tabs:
           - notificationMenu
           - search
           - customMenu
+      groups:
+        type: groups
+        description: "Restrict visibility to members of selected groups (optional)"
 f_nav_show_labels:
   description: "Show tabs name under icon"
   type: bool
@@ -62,6 +65,9 @@ f_nav_submenu_items:
         description: "Destination URL (internal or external)"
         validations:
           url: true
+      groups:
+        type: groups
+        description: "Restrict visibility to members of selected groups (optional)"
 profile_extra_items:
   description: "Add items to the profile menu which appears before the Log Out button."
   type: objects
@@ -81,6 +87,9 @@ profile_extra_items:
         required: true
         validations:
           url: true
+      groups:
+        type: groups
+        description: "Restrict visibility to members of selected groups (optional)"
 hide_hamburger:
   description: "Hide the default header hamburger icon. This should disable if you don't want to add hamburger tab to F NAV."
   type: bool

@@ -285,7 +285,7 @@ export default class AvatarProfile extends Component {
                 </li>
               {{/if}}
 
-              {{#each settings.profile_extra_items as |item|}}
+              {{#each this.visibleProfileItems as |item|}}
                 <li {{on "click" args.close}} class="custom-extra-item">
                   <a
                     title={{item.label}}
@@ -316,5 +316,20 @@ export default class AvatarProfile extends Component {
         </DMenu>
       </li>
     {{/if}}
+  get visibleProfileItems() {
+    const items = settings.profile_extra_items || [];
+    const user = this.currentUser;
+    return items.filter((item) => {
+      if (!item.groups || item.groups.length === 0) {
+        return true;
+      }
+      if (!user) {
+        return false;
+      }
+      const userGroupIds = user.groups?.map((g) => g.id) || [];
+      return item.groups.some((id) => userGroupIds.includes(id));
+    });
+  }
+
   </template>
 }

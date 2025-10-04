@@ -35,10 +35,33 @@ f_nav_tabs:
           - notificationToRoute
           - notificationMenu
           - search
+          - customMenu
 f_nav_show_labels:
   description: "Show tabs name under icon"
   type: bool
   default: false
+f_nav_submenu_items:
+  description: "Configure custom submenu items that appear when a tab with 'customMenu' function is clicked. Items will be displayed in a dropdown menu."
+  type: objects
+  default:
+    []
+  schema:
+    name: "submenu_item"
+    identifier: label
+    properties:
+      icon:
+        type: string
+        description: "FontAwesome 6 icon name (optional)"
+      label:
+        type: string
+        required: true
+        description: "Display text for the menu item"
+      url:
+        type: string
+        required: true
+        description: "Destination URL (internal or external)"
+        validations:
+          url: true
 profile_extra_items:
   description: "Add items to the profile menu which appears before the Log Out button."
   type: objects

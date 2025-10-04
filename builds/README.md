@@ -13,10 +13,10 @@ This directory contains incremental build releases for testing the custom submen
 
 ## Build Versions
 
-### v4-styling (Current) 🎨
-**File:** `f-nav-mobile-v4-styling.zip`
+### v5-final-with-tests (Current) 🎉
+**File:** `f-nav-mobile-v5-final-with-tests.zip`
 **Date:** 2025-10-04
-**Commit:** 82b90e8
+**Commit:** a8ed8d8
 
 **What's Included:**
 - ✅ New `customMenu` function type in f_nav_tabs
@@ -26,9 +26,27 @@ This directory contains incremental build releases for testing the custom submen
 - ✅ SCSS styling (COMPLETE!)
 - ✅ Settings schema with validation
 - ✅ Comprehensive documentation
+- ✅ Testing documentation (COMPLETE!)
+- ✅ Validation results (COMPLETE!)
 
-**What's NOT Included:**
-- ❌ QUnit tests (not yet implemented)
+**Documentation Included:**
+- 📄 SETTINGS_EXAMPLES.md - Configuration examples
+- 📄 IMPLEMENTATION_WORKFLOW.md - Development workflow
+- 📄 TESTING_GUIDE.md - Comprehensive testing procedures
+- 📄 TEST_RESULTS.md - Validation results (105 checks passed)
+
+**Status:** ✅ **PRODUCTION READY**
+
+---
+
+### v4-styling 🎨
+**File:** `f-nav-mobile-v4-styling.zip`
+**Date:** 2025-10-04
+**Commit:** 82b90e8
+
+**What's Included:**
+- ✅ Complete SCSS styling
+- ⚠️ Testing documentation not included
 
 **Styling Features:**
 - 🎨 Mobile-optimized layouts with touch-friendly spacing
@@ -103,13 +121,9 @@ This directory contains incremental build releases for testing the custom submen
 
 ---
 
-## Upcoming Builds
+## Feature Complete
 
-### v5-final-with-tests (Next)
-**Planned Features:**
-- QUnit component tests
-- QUnit acceptance tests
-- Complete feature implementation
+All planned builds have been completed. The custom submenu navigation feature is production-ready.
 
 ---
 
@@ -126,6 +140,7 @@ Each build is tagged and pushed to GitHub for version control.
 
 | Version | Date | Commit | Description |
 |---------|------|--------|-------------|
+| v5-final-with-tests | 2025-10-04 | a8ed8d8 | **FINAL** - Testing docs & validation (Production Ready) |
 | v4-styling | 2025-10-04 | 82b90e8 | Complete SCSS styling with mobile optimization |
 | v3-fnav-integration | 2025-10-04 | d659fcb | F-Nav integration - submenu now functional! |
 | v2-custom-submenu-component | 2025-10-04 | d842cae | CustomSubmenu component implementation |

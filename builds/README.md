@@ -13,21 +13,21 @@ This directory contains incremental build releases for testing the custom submen
 
 ## Build Versions
 
-### v2-custom-submenu-component (Current)
-**File:** `f-nav-mobile-v2-custom-submenu-component.zip`  
-**Date:** 2025-10-04  
-**Commit:** d842cae
+### v3-fnav-integration (Current) ⭐
+**File:** `f-nav-mobile-v3-fnav-integration.zip`
+**Date:** 2025-10-04
+**Commit:** d659fcb
 
 **What's Included:**
 - ✅ New `customMenu` function type in f_nav_tabs
 - ✅ New `f_nav_submenu_items` setting
 - ✅ CustomSubmenu.gjs component with DMenu integration
+- ✅ F-Nav Item integration (COMPLETE!)
 - ✅ Settings schema with validation
 - ✅ Comprehensive documentation
 
 **What's NOT Included:**
-- ❌ F-Nav integration (component not connected yet)
-- ❌ SCSS styling (not yet implemented)
+- ⚠️ SCSS styling (basic functionality works, styling pending)
 - ❌ Tests (not yet implemented)
 
 **Testing Instructions:**
@@ -41,15 +41,30 @@ This directory contains incremental build releases for testing the custom submen
    ```json
    [
      { "icon": "users", "label": "Community", "url": "/c/community" },
-     { "icon": "question-circle", "label": "Support", "url": "/c/support" }
+     { "icon": "question-circle", "label": "Support", "url": "/c/support" },
+     { "icon": "book", "label": "Documentation", "url": "/docs" }
    ]
    ```
-5. **Note:** The submenu won't appear yet (not integrated with F-Nav)
+5. **The submenu should now appear!** Click the Menu tab to see the dropdown
 
 **Expected Behavior:**
-- Settings save successfully
-- No console errors
-- Component exists but not yet rendered (integration pending)
+- ✅ Settings save successfully
+- ✅ Menu tab appears in navigation bar
+- ✅ Clicking menu tab opens submenu dropdown
+- ✅ Submenu items are clickable and navigate correctly
+- ✅ Menu closes when item is clicked
+- ⚠️ Styling may need refinement (next task)
+
+---
+
+### v2-custom-submenu-component
+**File:** `f-nav-mobile-v2-custom-submenu-component.zip`
+**Date:** 2025-10-04
+**Commit:** d842cae
+
+**What's Included:**
+- ✅ CustomSubmenu.gjs component with DMenu integration
+- ❌ Not integrated with F-Nav (component exists but not rendered)
 
 ---
 
@@ -68,18 +83,12 @@ This directory contains incremental build releases for testing the custom submen
 
 ## Upcoming Builds
 
-### v3-fnav-integration (Next)
-**Planned Features:**
-- F-Nav Item component updates
-- isCustomMenu getter
-- Complete integration
-- Submenu will be functional!
-
-### v4-styling
+### v4-styling (Next)
 **Planned Features:**
 - Complete SCSS styling
 - Mobile-optimized layouts
 - Touch-friendly interactions
+- Custom submenu modal styling
 
 ### v5-final-with-tests
 **Planned Features:**
@@ -102,6 +111,7 @@ Each build is tagged and pushed to GitHub for version control.
 
 | Version | Date | Commit | Description |
 |---------|------|--------|-------------|
+| v3-fnav-integration | 2025-10-04 | d659fcb | F-Nav integration - submenu now functional! |
 | v2-custom-submenu-component | 2025-10-04 | d842cae | CustomSubmenu component implementation |
 | v1-settings-schema | 2025-10-04 | 655da49 | Initial settings schema implementation |
 

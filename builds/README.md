@@ -13,22 +13,41 @@ This directory contains incremental build releases for testing the custom submen
 
 ## Build Versions
 
-### v3-fnav-integration (Current) ⭐
-**File:** `f-nav-mobile-v3-fnav-integration.zip`
+### v4-styling (Current) 🎨
+**File:** `f-nav-mobile-v4-styling.zip`
 **Date:** 2025-10-04
-**Commit:** d659fcb
+**Commit:** 82b90e8
 
 **What's Included:**
 - ✅ New `customMenu` function type in f_nav_tabs
 - ✅ New `f_nav_submenu_items` setting
 - ✅ CustomSubmenu.gjs component with DMenu integration
 - ✅ F-Nav Item integration (COMPLETE!)
+- ✅ SCSS styling (COMPLETE!)
 - ✅ Settings schema with validation
 - ✅ Comprehensive documentation
 
 **What's NOT Included:**
-- ⚠️ SCSS styling (basic functionality works, styling pending)
-- ❌ Tests (not yet implemented)
+- ❌ QUnit tests (not yet implemented)
+
+**Styling Features:**
+- 🎨 Mobile-optimized layouts with touch-friendly spacing
+- 🎨 Hover/focus/active states for accessibility
+- 🎨 Dark mode support
+- 🎨 Responsive breakpoints for tablet/desktop
+- 🎨 Empty state message
+- 🎨 Consistent with existing profile menu design
+
+---
+
+### v3-fnav-integration ⭐
+**File:** `f-nav-mobile-v3-fnav-integration.zip`
+**Date:** 2025-10-04
+**Commit:** d659fcb
+
+**What's Included:**
+- ✅ F-Nav Item integration (functional but basic styling)
+- ⚠️ SCSS styling (not yet implemented)
 
 **Testing Instructions:**
 1. Install the theme component
@@ -49,11 +68,14 @@ This directory contains incremental build releases for testing the custom submen
 
 **Expected Behavior:**
 - ✅ Settings save successfully
-- ✅ Menu tab appears in navigation bar
-- ✅ Clicking menu tab opens submenu dropdown
+- ✅ Menu tab appears in navigation bar with proper styling
+- ✅ Clicking menu tab opens submenu dropdown with polished design
 - ✅ Submenu items are clickable and navigate correctly
 - ✅ Menu closes when item is clicked
-- ⚠️ Styling may need refinement (next task)
+- ✅ Touch-friendly spacing on mobile devices
+- ✅ Smooth hover/focus states
+- ✅ Dark mode support
+- ✅ Professional appearance matching Discourse design
 
 ---
 
@@ -83,14 +105,7 @@ This directory contains incremental build releases for testing the custom submen
 
 ## Upcoming Builds
 
-### v4-styling (Next)
-**Planned Features:**
-- Complete SCSS styling
-- Mobile-optimized layouts
-- Touch-friendly interactions
-- Custom submenu modal styling
-
-### v5-final-with-tests
+### v5-final-with-tests (Next)
 **Planned Features:**
 - QUnit component tests
 - QUnit acceptance tests
@@ -111,6 +126,7 @@ Each build is tagged and pushed to GitHub for version control.
 
 | Version | Date | Commit | Description |
 |---------|------|--------|-------------|
+| v4-styling | 2025-10-04 | 82b90e8 | Complete SCSS styling with mobile optimization |
 | v3-fnav-integration | 2025-10-04 | d659fcb | F-Nav integration - submenu now functional! |
 | v2-custom-submenu-component | 2025-10-04 | d842cae | CustomSubmenu component implementation |
 | v1-settings-schema | 2025-10-04 | 655da49 | Initial settings schema implementation |

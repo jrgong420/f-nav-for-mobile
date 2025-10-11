@@ -26,12 +26,7 @@ export default apiInitializer("1.14.0", (api) => {
   // Initial update
   updateBodyClass();
 
-  // Replace the home logo contents with our custom back arrow
-  // Only render when header is minimized (small logo state)
-  api.renderInOutlet("home-logo-contents", <template>
-    {{#if @outletArgs.minimized}}
-      <FnavHeaderBack />
-    {{/if}}
-  </template>);
+  // Register connector that only renders when minimized + topic route via shouldRender
+  api.renderInOutlet("home-logo-contents", FnavHeaderBack);
 });
 

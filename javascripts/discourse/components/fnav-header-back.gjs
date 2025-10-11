@@ -8,6 +8,11 @@ import DiscourseURL from "discourse/lib/url";
 export default class FnavHeaderBack extends Component {
   @service router;
 
+  static shouldRender(args) {
+    // Render only when header is minimized AND topic route is active
+    return !!(args?.minimized && document.body.classList.contains("fnav-header-back-active"));
+  }
+
   get isTopicRoute() {
     return this.router.currentRouteName?.startsWith("topic.");
   }
@@ -16,7 +21,7 @@ export default class FnavHeaderBack extends Component {
   handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    
+
     if (this.isTopicRoute) {
       // Check if there's history to go back to
       if (window.history.length > 1) {
@@ -41,7 +46,7 @@ export default class FnavHeaderBack extends Component {
         aria-label="Back"
         {{on "click" this.handleClick}}
       >
-        {{dIcon "arrow-right"}}
+        {{dIcon "angle-left"}}
       </span>
     {{/if}}
   </template>

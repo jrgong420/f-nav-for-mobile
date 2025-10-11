@@ -9,19 +9,6 @@ export default class TopicBackButton extends Component {
   @service router;
   @service site;
 
-  constructor() {
-    super(...arguments);
-    this.applyBodyClass();
-    this._onRouteChange = () => this.applyBodyClass();
-    this.router.on?.("routeDidChange", this._onRouteChange);
-  }
-
-  willDestroy() {
-    super.willDestroy?.(...arguments);
-    this.router.off?.("routeDidChange", this._onRouteChange);
-    document.body.classList.remove("topic-back-button-active");
-  }
-
   get isTopicRoute() {
     return this.router.currentRouteName?.startsWith?.("topic.");
   }
@@ -35,10 +22,6 @@ export default class TopicBackButton extends Component {
     );
   }
 
-  applyBodyClass() {
-    document.body.classList.toggle("topic-back-button-active", this.shouldRender);
-  }
-
   @action
   onClick() {
     if (window.history.length > 1) {
@@ -50,9 +33,14 @@ export default class TopicBackButton extends Component {
 
   <template>
     {{#if this.shouldRender}}
-      <button class="topic-back-button" {{on "click" this.onClick}} aria-label="Back">
-        {{dIcon "arrow-left"}}
-      </button>
+      <div class="topic-back-button-wrapper">
+        <button class="topic-back-button" {{on "click" this.onClick}} aria-label="Back">
+          {{dIcon "arrow-left"}}
+        </button>
+      </div>
+    {{else}}
+      {{! Render default logo content when not in topic }}
+      {{yield}}
     {{/if}}
   </template>
 }

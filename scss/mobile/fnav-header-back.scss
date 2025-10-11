@@ -20,4 +20,25 @@
   }
 }
 
+// Button visual states to match header nav buttons (uses core variables)
+.fnav-header-back {
+  .btn.btn-icon {
+    color: var(--header_primary);
+    border-radius: var(--border-radius);
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      background-color: var(--primary-very-low);
+    }
+
+    &:active {
+      background-color: var(--primary-low);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tertiary);
+      outline-offset: 2px;
+    }
+  }
+}
 

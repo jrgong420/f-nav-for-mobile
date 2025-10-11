@@ -24,7 +24,7 @@
 .fnav-header-back {
   .btn.btn-icon {
     color: var(--header_primary);
-    border-radius: var(--border-radius);
+    border-radius: var(--d-post-control-border-radius, var(--d-button-border-radius, var(--border-radius)));
     transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
@@ -59,6 +59,6 @@
   button:hover,
   button:focus,
   button:active {
-    border-radius: var(--d-button-border-radius, var(--border-radius));
+    border-radius: var(--d-post-control-border-radius, var(--d-button-border-radius, var(--border-radius)));
   }
 }

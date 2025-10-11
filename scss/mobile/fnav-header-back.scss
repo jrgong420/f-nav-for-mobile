@@ -42,3 +42,12 @@
   }
 }
 
+
+
+// Match header sidebar toggle hover behavior
+.fnav-header-back {
+  button:focus:hover,
+  .discourse-no-touch & button:hover {
+    background-color: var(--primary-low);
+  }
+}

@@ -12,16 +12,26 @@ export default apiInitializer("1.14.0", (api) => {
   // Get router service to check current route
   const router = api.container.lookup("service:router");
 
-  // Toggle body class based on route
-  const updateBodyClass = () => {
-    const isTopicRoute = router.currentRouteName?.startsWith("topic.");
-    document.body.classList.toggle(BODY_CLASS, isTopicRoute);
+  // Determine topic route quickly; fall back to URL path during initial paint
+  const isTopicRouteNow = () => {
+    const byRouter = router.currentRouteName?.startsWith("topic.");
+    if (byRouter !== undefined) {
+      return !!byRouter;
+    }
+    // Fallback: URL-based heuristic (e.g., /t/slug/id or /t/id)
+    return /^\/t\//.test(window.location.pathname);
   };
 
-  // Update on page change
-  api.onPageChange(() => {
-    updateBodyClass();
-  });
+  // Toggle body class based on route
+  const updateBodyClass = () => {
+    document.body.classList.toggle(BODY_CLASS, isTopicRouteNow());
+  };
+
+  // Update ASAP on route transitions
+  router.on?.("routeDidChange", updateBodyClass);
+
+  // Update on Discourse page change hook as well
+  api.onPageChange(updateBodyClass);
 
   // Initial update
   updateBodyClass();

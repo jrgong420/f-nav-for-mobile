@@ -38,15 +38,16 @@ export default class FnavHeaderBack extends Component {
   <template>
     {{! Only render on topic routes }}
     {{#if this.isTopicRoute}}
-      <span
-        class="fnav-header-back"
-        role="button"
-        tabindex="0"
-        title="Back"
-        aria-label="Back"
-        {{on "click" this.handleClick}}
-      >
-        {{dIcon "angle-left"}}
+      <span class="fnav-header-back">
+        <button
+          type="button"
+          class="btn btn-flat btn-icon no-text"
+          title="Back"
+          aria-label="Back"
+          {{on "click" this.handleClick}}
+        >
+          {{dIcon "angle-left"}}
+        </button>
       </span>
     {{/if}}
   </template>

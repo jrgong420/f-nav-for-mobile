@@ -16,7 +16,7 @@
   }
 
   .d-icon {
-    font-size: 1.25em;
+    font-size: var(--font-up-4);
   }
 }
 
@@ -28,7 +28,7 @@
     transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover {
-      background-color: var(--primary-very-low);
+      background-color: var(--primary-low);
     }
 
     &:active {

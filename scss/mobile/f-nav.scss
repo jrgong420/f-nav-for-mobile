@@ -226,8 +226,8 @@
 
 // F NAV hidden
 body.f-nav-hidden {
-  // Header hide everywhere but topic, pm and chat
-  &:not(.archetype-regular):not(.archetype-private_message):not(.has-full-page-chat) {
+  // Header hide everywhere but topic, pm, banner and chat
+  &:not(.archetype-regular):not(.archetype-private_message):not(.archetype-banner):not(.has-full-page-chat) {
     .d-header-wrap {
       animation: fadeOutZ 0.1s forwards linear;
     }

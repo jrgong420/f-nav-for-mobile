@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Augment AI
+.augment/
+
+# Discourse Theme CLI
+.discourse-site.json
+
+# Node
+node_modules/
+

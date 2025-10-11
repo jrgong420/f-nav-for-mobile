@@ -106,8 +106,12 @@ hide_nav_in_topic:
   description: "Hide the custom nav bar when viewing topic pages"
   type: bool
   default: true
+header_back_icon_enabled:
+  description: "Replace the header home logo with a back arrow icon that mimics the F-NAV home button behavior"
+  type: bool
+  default: false
 svg_icons:
-  default: "angle-left|message"
+  default: "angle-left|message|arrow-right"
   type: list
   list_type: "compact"
   description: "List of FontAwesome 6 icons used in this theme component"

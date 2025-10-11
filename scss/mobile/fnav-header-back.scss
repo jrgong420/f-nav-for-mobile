@@ -1,0 +1,22 @@
+// F-NAV Header Back Icon
+.fnav-header-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--header_primary);
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  .d-icon {
+    font-size: 1.25em;
+  }
+}
+

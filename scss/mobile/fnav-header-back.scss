@@ -20,3 +20,14 @@
   }
 }
 
+// Hide default small logo when on topic route and header is minimized
+// This allows our back arrow to replace it
+body.fnav-header-back-active {
+  .title--minimized {
+    #site-logo.logo-small,
+    .d-icon-house {
+      display: none;
+    }
+  }
+}
+

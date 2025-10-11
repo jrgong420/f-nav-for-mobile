@@ -26,8 +26,13 @@ export default class AvatarProfile extends Component {
   @service siteSettings;
   @service userStatus;
   @service modal;
+  @service site;
 
   saving = false;
+
+  get shouldRender() {
+    return this.site.mobileView && this.currentUser;
+  }
 
   get showToggleAnonymousButton() {
     return (
@@ -137,7 +142,7 @@ export default class AvatarProfile extends Component {
 
 
   <template>
-    {{#if this.currentUser}}
+    {{#if this.shouldRender}}
       <li id="current-user" class="header-dropdown-toggle current-user user-menu-panel">
         <DMenu
           @identifier="avatar-profile"

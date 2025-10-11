@@ -38,6 +38,36 @@ html:not(.anon) {
   }
 }
 
+// Topic back button styles and default logo replacement (mobile only)
+html:not(.anon) {
+  // When back button is present, hide default logo in header title area
+  body.topic-back-button-active {
+    .d-header {
+      .title {
+        a.home-logo,
+        .logo,
+        .header-logo,
+        .title-logo {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.topic-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25em;
+  color: var(--header_primary);
+
+  .d-icon {
+    width: 1.25em;
+    height: 1.25em;
+  }
+}
+
 // Profile menu
 .fk-d-menu-modal.avatar-profile-content {
   .d-modal__body {
@@ -86,7 +116,7 @@ html:not(.anon) {
         color: var(--tertiary);
       }
     }
-    
+
     .set-user-status {
       .emoji {
         padding-top: 0;
@@ -103,12 +133,12 @@ html:not(.anon) {
         font-size: var(--font-down-3);
         color: var(--primary-medium);
       }
-    
+
       .d-icon {
         padding: 0;
       }
     }
-    
+
     hr {
       margin: 3px 0;
       border-top: 1px solid var(--primary-low);

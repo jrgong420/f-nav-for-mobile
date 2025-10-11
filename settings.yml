@@ -106,8 +106,12 @@ hide_nav_in_topic:
   description: "Hide the custom nav bar when viewing topic pages"
   type: bool
   default: true
+show_topic_back_button_in_header:
+  type: bool
+  default: true
+  description: "Show a back button in the header logo area on topic pages (mobile)"
 svg_icons:
-  default: "angle-left|message"
+  default: "angle-left|arrow-left|message"
   type: list
   list_type: "compact"
   description: "List of FontAwesome 6 icons used in this theme component"

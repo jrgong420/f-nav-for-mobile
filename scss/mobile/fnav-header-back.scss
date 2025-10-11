@@ -51,3 +51,14 @@
     background-color: var(--primary-low);
   }
 }
+
+
+// Ensure border radius matches other header buttons and cannot be overridden easily
+.fnav-header-back {
+  button,
+  button:hover,
+  button:focus,
+  button:active {
+    border-radius: var(--d-button-border-radius, var(--border-radius));
+  }
+}

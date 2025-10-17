@@ -60,5 +60,6 @@
   button:focus,
   button:active {
     border-radius: var(--d-post-control-border-radius, var(--d-button-border-radius, var(--border-radius)));
+    padding: 0;
   }
 }

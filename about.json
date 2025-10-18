@@ -3,5 +3,6 @@
   "about_url": null,
   "component": true,
   "authors": "Don",
-  "learn_more": "https://meta.discourse.org/t/beginners-guide-to-using-discourse-themes/91966"
+  "learn_more": "https://meta.discourse.org/t/beginners-guide-to-using-discourse-themes/91966",
+  "version": "1.0.0"
 }

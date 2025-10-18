@@ -1,0 +1,65 @@
+// F-NAV Header Back Icon
+.fnav-header-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--header_primary);
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  .d-icon {
+    font-size: var(--font-up-4);
+  }
+}
+
+// Button visual states to match header nav buttons (uses core variables)
+.fnav-header-back {
+  .btn.btn-icon {
+    color: var(--header_primary);
+    border-radius: var(--d-post-control-border-radius, var(--d-button-border-radius, var(--border-radius)));
+    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+      background-color: var(--primary-low);
+    }
+
+    &:active {
+      background-color: var(--primary-low);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--tertiary);
+      outline-offset: 2px;
+    }
+  }
+}
+
+
+
+// Match header sidebar toggle hover behavior
+.fnav-header-back {
+  button:focus:hover,
+  .discourse-no-touch & button:hover {
+    background-color: var(--primary-low);
+  }
+}
+
+
+// Ensure border radius matches other header buttons and cannot be overridden easily
+.fnav-header-back {
+  button,
+  button:hover,
+  button:focus,
+  button:active {
+    border-radius: var(--d-post-control-border-radius, var(--d-button-border-radius, var(--border-radius)));
+    padding: 0;
+  }
+}

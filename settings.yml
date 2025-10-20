@@ -110,6 +110,10 @@ header_back_icon_enabled:
   description: "Replace the header home logo with a back arrow icon that mimics the F-NAV home button behavior"
   type: bool
   default: false
+custom_user_menu_installed:
+  description: "Hide the default header user menu (li#current-user) on mobile when a custom user menu theme component is installed"
+  type: bool
+  default: false
 svg_icons:
   default: "angle-left|message|arrow-right"
   type: list

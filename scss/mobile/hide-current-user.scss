@@ -1,0 +1,5 @@
+// Hide default header user menu on mobile when custom user menu is installed
+.custom-user-menu-installed.mobile-view li#current-user {
+  display: none !important;
+}
+

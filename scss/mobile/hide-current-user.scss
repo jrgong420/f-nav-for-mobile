@@ -1,5 +1,8 @@
 // Hide default header user menu on mobile when custom user menu is installed
-.custom-user-menu-installed.mobile-view li#current-user {
-  display: none !important;
+// Uses SCSS variable that references the theme setting
+@if $custom_user_menu_installed {
+  .mobile-view li#current-user {
+    display: none !important;
+  }
 }
 

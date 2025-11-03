@@ -78,12 +78,21 @@ export default class FNav extends Component {
 
   // Computed properties for visibility and states
   get shouldShowNav() {
+    // Hide on chat routes when setting is disabled
+    if (this.isChatRoute && !settings.show_nav_in_chat) {
+      return false;
+    }
     return this.currentUser && this.site.mobileView && this.visibleTabs.length;
   }
 
   get canUseChat() {
     return this.currentUser?.has_chat_enabled && this.siteSettings?.chat_enabled;
   }
+
+  get isChatRoute() {
+    return this.router.currentRouteName?.startsWith("chat.");
+  }
+
 
   get isTopicRoute() {
     return this.router.currentRouteName.startsWith("topic.");
@@ -121,8 +130,8 @@ export default class FNav extends Component {
       return "/review";
     }
     const base = `/u/${this.currentUser.username_lower}/notifications`;
-    return this.currentUser.all_unread_notifications_count 
-      ? `${base}?filter=unread` 
+    return this.currentUser.all_unread_notifications_count
+      ? `${base}?filter=unread`
       : base;
   }
 
@@ -132,7 +141,7 @@ export default class FNav extends Component {
     if (!until) {
       return null;
     }
-    
+
     const date = new Date(until);
     return date < new Date() ? null : date;
   }

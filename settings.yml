@@ -106,6 +106,10 @@ hide_nav_in_topic:
   description: "Hide the custom nav bar when viewing topic pages"
   type: bool
   default: true
+show_nav_in_chat:
+  description: "Show the custom F-NAV inside full-page chat views"
+  type: bool
+  default: false
 header_back_icon_enabled:
   description: "Replace the header home logo with a back arrow icon that mimics the F-NAV home button behavior"
   type: bool

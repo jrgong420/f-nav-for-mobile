@@ -227,12 +227,10 @@ body.f-nav-hidden {
     }
   }
 
-  &:not(.has-full-page-chat) {
-    .f-nav {
-      transform: translateY(var(--f-nav-height));
-      padding-bottom: 0;
-      border-top: none;
-    }
+  .f-nav {
+    transform: translateY(var(--f-nav-height));
+    padding-bottom: 0;
+    border-top: none;
   }
 
   // Topic elements scroll down position
@@ -276,12 +274,31 @@ html:not(.anon) {
       padding-bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
     }
   }
+
+  // Add padding to chat pages when nav is shown
+  @if $show-nav-in-chat == "true" {
+    body.has-full-page-chat {
+      #main-outlet {
+        padding-bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
+      }
+
+
+      // Ensure chat content containers aren't covered by F-NAV
+      #main-chat-outlet,
+      .full-page-chat,
+      .chat-live-pane {
+        padding-bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
+      }
+    }
+  }
 }
 
-// Hide F NAV on /chat
-.has-full-page-chat {
-  .f-nav {
-    display: none;
+// Hide F NAV on /chat (when setting is disabled)
+@if $show-nav-in-chat == "false" {
+  .has-full-page-chat {
+    .f-nav {
+      display: none;
+    }
   }
 }
 

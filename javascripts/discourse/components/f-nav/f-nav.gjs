@@ -44,6 +44,13 @@ export default class FNav extends Component {
 
   @action
   scrollListener(event) {
+    // Disable auto-hide in chat channels/DMs/threads because scrolling happens in
+    // the .chat-messages-scroller container (not the document), which can trigger
+    // incorrect hide/show when the document scrollY changes during route transitions.
+    if (this.isInChatConversation) {
+      return;
+    }
+
     if (
       document.documentElement.classList.contains(MODAL_OPEN_CLASS) ||
       document.documentElement.classList.contains(SCROLL_LOCK_CLASS)
@@ -57,7 +64,8 @@ export default class FNav extends Component {
 
     this.scrollTimeout = requestAnimationFrame(() => {
       const currentScroll = window.scrollY;
-      const shouldHide = this.lastScrollTop < currentScroll && currentScroll > SCROLL_MAX;
+      const shouldHide =
+        this.lastScrollTop < currentScroll && currentScroll > SCROLL_MAX;
 
       document.body.classList.toggle(HIDDEN_F_NAV_CLASS, shouldHide);
       this.lastScrollTop = currentScroll;
@@ -78,21 +86,24 @@ export default class FNav extends Component {
 
   // Computed properties for visibility and states
   get shouldShowNav() {
-    // Hide on chat routes when setting is disabled
-    if (this.isChatRoute && !settings.show_nav_in_chat) {
-      return false;
-    }
     return this.currentUser && this.site.mobileView && this.visibleTabs.length;
   }
+
+  get isInChatConversation() {
+    const route = this.router.currentRouteName || "";
+    // chat channels (chat.channel.*), direct messages (chat.direct-messages.*),
+    // and chat threads (chat.channel.thread.*)
+    return (
+      route.startsWith("chat.channel.") ||
+      route.startsWith("chat.direct-messages.") ||
+      route.startsWith("chat.channel.thread.")
+    );
+  }
+
 
   get canUseChat() {
     return this.currentUser?.has_chat_enabled && this.siteSettings?.chat_enabled;
   }
-
-  get isChatRoute() {
-    return this.router.currentRouteName?.startsWith("chat.");
-  }
-
 
   get isTopicRoute() {
     return this.router.currentRouteName.startsWith("topic.");

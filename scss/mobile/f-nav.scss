@@ -309,17 +309,61 @@ html:not(.anon) {
       }
     }
 
-    // When F‑NAV is visible, lift the chat footer above it by exactly the nav height
+    // When F‑NAV is visible, lift chat UI elements above it by exactly the nav height
     body.has-full-page-chat:not(.f-nav-hidden) {
       nav.c-footer, .c-footer {
         transform: translateY(calc(var(--f-nav-height) * -1));
         transition: transform 0.1s linear; // match .f-nav timing/easing
       }
+
+      // Lift the chat composer wrapper to prevent f-nav from covering it
+      .chat-composer__wrapper {
+        transform: translateY(calc(var(--f-nav-height) * -1));
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+
+      // Add top padding to chat messages container to prevent header overlap
+      .chat-messages-container {
+        padding-top: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
+        transition: padding-top 0.1s linear; // match .f-nav timing/easing
+      }
+
+      .popper-viewport {
+        transform: translateY(calc(var(--f-nav-height) * -1));
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+
+      // Lift the scroll-to-bottom button above f-nav
+      .chat-scroll-to-bottom__button {
+        transform: translateY(calc(var(--f-nav-height) * -2));
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
     }
 
-    // When F‑NAV hides on scroll, return the chat footer to its normal position
+    // When F‑NAV hides on scroll, return all chat UI elements to their normal positions
     body.has-full-page-chat.f-nav-hidden {
       nav.c-footer, .c-footer {
+        transform: translateY(0);
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+
+      .chat-composer__wrapper {
+        transform: translateY(0);
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+
+      // Remove top padding from chat messages container when f-nav is hidden
+      .chat-messages-container {
+        padding-top: 0;
+        transition: padding-top 0.1s linear; // match .f-nav timing/easing
+      }
+
+      .popper-viewport {
+        transform: translateY(0);
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+
+      .chat-scroll-to-bottom__button {
         transform: translateY(0);
         transition: transform 0.1s linear; // match .f-nav timing/easing
       }

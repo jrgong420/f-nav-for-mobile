@@ -293,6 +293,41 @@ html:not(.anon) {
   }
 }
 
+// Sync chat footer with F‑NAV show/hide; avoid content padding gaps
+@if $show-nav-in-chat == "true" {
+  html:not(.anon) {
+    // Remove extra bottom padding on chat containers to prevent empty space
+    body.has-full-page-chat {
+      #main-outlet {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      #main-chat-outlet,
+      .full-page-chat,
+      .chat-live-pane {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+    }
+
+    // When F‑NAV is visible, lift the chat footer above it by exactly the nav height
+    body.has-full-page-chat:not(.f-nav-hidden) {
+      nav.c-footer, .c-footer {
+        transform: translateY(calc(var(--f-nav-height) * -1));
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+    }
+
+    // When F‑NAV hides on scroll, return the chat footer to its normal position
+    body.has-full-page-chat.f-nav-hidden {
+      nav.c-footer, .c-footer {
+        transform: translateY(0);
+        transition: transform 0.1s linear; // match .f-nav timing/easing
+      }
+    }
+  }
+}
+
+
 // Hide F NAV on /chat (when setting is disabled)
 @if $show-nav-in-chat == "false" {
   .has-full-page-chat {

@@ -236,8 +236,17 @@ body.f-nav-hidden {
   // Topic elements scroll down position
   .d-toc-toggle,
   .posts-filtered-notice,
-  #topic-progress-wrapper:not(.docked) {
+  #topic-progress-wrapper:not(.docked),
+  .topic-navigation.with-topic-progress,
+  div.with-topic-progress.ember-view.topic-navigation {
     bottom: env(safe-area-inset-bottom);
+  }
+
+  // Ensure topic navigation wrapper has spacing when f-nav is hidden
+  .topic-navigation.with-topic-progress,
+  div.with-topic-progress.ember-view.topic-navigation {
+    padding-bottom: env(safe-area-inset-bottom);
+    transition: padding-bottom 0.1s linear; // match .f-nav timing/easing
   }
 }
 
@@ -246,9 +255,17 @@ html:not(.anon) {
   body:not(.f-nav-hidden) {
     .d-toc-toggle,
     .posts-filtered-notice,
-    #topic-progress-wrapper:not(.docked) {
+    #topic-progress-wrapper:not(.docked),
+    .topic-navigation.with-topic-progress,
+    div.with-topic-progress.ember-view.topic-navigation {
       bottom: calc(var(--f-nav-height) + env(safe-area-inset-bottom));
-      transition: bottom 0.1s linear;
+      transition: bottom 0.1s linear; // match .f-nav timing/easing
+    }
+
+    // Topic navigation wrapper: add spacing equal to f-nav height when visible
+    .topic-navigation.with-topic-progress,
+    div.with-topic-progress.ember-view.topic-navigation {
+      transition: bottom 0.1s linear, padding-bottom 0.1s linear; // match .f-nav timing/easing
     }
 
     #reply-control.draft,

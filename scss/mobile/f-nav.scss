@@ -245,7 +245,6 @@ body.f-nav-hidden {
   // Ensure topic navigation wrapper has spacing when f-nav is hidden
   .topic-navigation.with-topic-progress,
   div.with-topic-progress.ember-view.topic-navigation {
-    padding-bottom: env(safe-area-inset-bottom);
     transition: padding-bottom 0.1s linear; // match .f-nav timing/easing
   }
 }
